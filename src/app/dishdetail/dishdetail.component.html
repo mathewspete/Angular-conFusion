@@ -1,4 +1,5 @@
 <div class="container"
+<<<<<<< HEAD
 	fxLayout="row"
 	fxLayout.sm="column"
 	fxLayout.xs="column"
@@ -32,4 +33,39 @@
 			</md-list-item>
 		</md-list>
 	</div>
+=======
+    fxLayout="row"
+    fxLayout.sm="column"
+    fxLayout.xs="column"
+    fxLayoutAlign.gt-md="space-around center"
+    fxLayoutGap="10px" 
+    fxLayoutGap.xs="0">
+
+
+  <div fxFlex="40">
+    <md-card>
+      <md-card-header>
+        <md-card-title>
+          <h3>{{dish.name | uppercase}}</h3>
+        </md-card-title>
+      </md-card-header>
+      <img md-card-image src={{dish.image}} alt={{dish.name}}>
+      	<md-card-content>
+    <p>{{dish.description}}</p>
+  		</md-card-content>
+    </md-card>
+  </div>
+
+  <div fxFlex="40">
+  	<h2>Comments</h2>
+    <md-list>
+  		<md-list-item *ngFor="let comments of dish.comments">
+    		<h3 md-line> {{comments.comment}} </h3><br />
+    		<p md-line> {{comments.rating}} stars </p><br />
+    		<p md-line> -- {{comments.author}} {{comments.date | date}} </p>
+  		</md-list-item>
+	</md-list>
+  </div>
+
+>>>>>>> 2234eb26cd1578f9fa2489c5467c6b832208b8bb
 </div>

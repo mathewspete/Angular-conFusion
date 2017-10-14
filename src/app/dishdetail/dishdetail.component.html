@@ -1,10 +1,4 @@
-<div class="container"
-	fxLayout="row"
-	fxLayout.sm="column"
-	fxLayout.xs="column"
-	fxLayoutAlign.gt-md="space-around center"
-	fxLayoutGap="10px"
-	fxLayoutGap.xs="0">
+<div class="container" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.gt-md="space-around center" fxLayoutGap="10px" fxLayoutGap.xs="0">
 	<div fxFlex="40">
 		<md-card *ngIf="dish">
 			<md-card-header>
@@ -17,6 +11,7 @@
 				<p>{{dish.description}}</p>
 			</md-card-content>
 			<md-card-actions>
+				<button md-button (click)="goBack()">BACK</button>
 				<button md-button>LIKE</button>
 				<button md-button>SHARE</button>
 			</md-card-actions>

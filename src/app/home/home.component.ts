@@ -8,7 +8,7 @@ import { Leader } from '../shared/leader';
 import { LeaderService } from '../services/leader.service';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-home', 
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })

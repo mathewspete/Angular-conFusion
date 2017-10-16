@@ -5,6 +5,7 @@ import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MdToolbarModule, MdButtonModule, MdCheckboxModule,MdListModule,MdGridListModule,MdCardModule} from '@angular/material';
 
 import 'hammerjs';
 
@@ -39,6 +40,12 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
+    MdToolbarModule,
+    MdButtonModule,
+    MdCheckboxModule,
+    MdListModule,
+    MdGridListModule,
+    MdCardModule,
     FlexLayoutModule,
     AppRoutingModule,
     FormsModule,

@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { Params, ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
+import { Params, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-import 'rxjs/add/operator/switchMap';
-
 import { Dish } from '../shared/dish';
 import { DishService } from '../services/dish.service';
 import { Comment } from '../shared/comment';
+import { Location } from '@angular/common';
+
+import 'rxjs/add/operator/switchMap';
+
+
 
 @Component({
   selector: 'app-dishdetail',
@@ -41,14 +43,13 @@ export class DishdetailComponent implements OnInit {
   constructor(
     private dishService: DishService,
     private route: ActivatedRoute,
-    private router: Router,
+    private location: Location,
     private fb: FormBuilder) {
     this.createForm();
   }
 
   ngOnInit() {
     this.dishService.getDishIds().subscribe(dishIds => this.dishIds = dishIds);
-
     // (+) before params['id'] turns the string into a number
     this.route.params
       .switchMap((params: Params) => this.dishService.getDish(+params['id']))
@@ -62,7 +63,7 @@ export class DishdetailComponent implements OnInit {
  }
 
   goBack(): void {
-    this.router.navigate(['menu']);
+    this.location.back();
   }
 
   createForm() {

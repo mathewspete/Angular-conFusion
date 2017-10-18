@@ -5,8 +5,10 @@ import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import {MdToolbarModule, MdButtonModule, MdCheckboxModule,MdListModule,MdGridListModule,MdCardModule,MdSliderModule} from '@angular/material';
+import { MdToolbarModule, MdButtonModule, MdCheckboxModule,MdListModule,MdGridListModule,MdCardModule,MdSliderModule } from '@angular/material';
 import { HttpModule } from '@angular/http';
+import { RestangularModule, Restangular } from 'ngx-restangular';
+import { RestangularConfigFactory } from './shared/restConfig';
 
 import 'hammerjs';
 
@@ -23,7 +25,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { DishService } from './services/dish.service';
 import { PromotionService } from './services/promotion.service';
 import { LeaderService } from './services/leader.service';
-import { ProcessHttpmsgService } from './services/process-httpmsg.service';
+import { ProcessHTTPMsgService } from './services/process-httpmsg.service';
 import { baseURL } from './shared/baseurl';
 
 @NgModule({
@@ -53,14 +55,15 @@ import { baseURL } from './shared/baseurl';
     FlexLayoutModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RestangularModule.forRoot(RestangularConfigFactory)
   ],
   providers: [
     DishService,
     PromotionService,
     LeaderService,
     {provide: 'BaseURL', useValue: baseURL},
-    ProcessHttpmsgService
+    ProcessHTTPMsgService
   ],
   entryComponents: [
     LoginComponent

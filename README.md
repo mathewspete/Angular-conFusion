@@ -1,3 +1,10 @@
+HTTP Part 1
+
+ERROR in /Angular-conFusion/src/app/services/dish.service.ts (21,22): Property 'map' does not exist on type 'Observable<Response>'.
+ERROR in /Angular-conFusion/src/app/services/dish.service.ts (26,22): Property 'map' does not exist on type 'Observable<Response>'.
+ERROR in /Angular-conFusion/src/app/services/dish.service.ts (31,22): Property 'map' does not exist on type 'Observable<Response>'.
+ERROR in /Angular-conFusion/src/app/services/dish.service.ts (36,8): Property 'map' does not exist on type 'Observable<Dish[]>'.
+
 # ConFusion
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.5.
@@ -25,3 +32,11 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Errors in HTTP Part 1
+
+ERROR in /Angular-conFusion/src/app/services/dish.service.ts (21,22): Property 'map' does not exist on type 'Observable<Response>'.
+ERROR in /Angular-conFusion/src/app/services/dish.service.ts (26,22): Property 'map' does not exist on type 'Observable<Response>'.
+ERROR in /Angular-conFusion/src/app/services/dish.service.ts (31,22): Property 'map' does not exist on type 'Observable<Response>'.
+ERROR in /Angular-conFusion/src/app/services/dish.service.ts (36,8): Property 'map' does not exist on type 'Observable<Dish[]>'.
+

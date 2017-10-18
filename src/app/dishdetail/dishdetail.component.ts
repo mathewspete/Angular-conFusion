@@ -18,10 +18,11 @@ import 'rxjs/add/operator/switchMap';
 
 export class DishdetailComponent implements OnInit {
   dish: Dish;
+  dishcopy = null;
   dishIds: number[];
   prev: number;
   next: number;
-  newComment: Comment;
+  comment: Comment;
   ratings = {min: 1, max: 5, value: 5, thumbLabel: true, showTicks: true, autoTicks: false, tickInterval: 1};
   commentForm: FormGroup;
   errMess: string;
@@ -46,16 +47,16 @@ export class DishdetailComponent implements OnInit {
     private route: ActivatedRoute,
     private location: Location,
     private fb: FormBuilder,
-    @Inject('BaseURL') private BaseURL) {
-    this.createForm();
-  }
+    @Inject('BaseURL') private BaseURL) { }
 
   ngOnInit() {
+    this.createForm();
+
     this.dishService.getDishIds().subscribe(dishIds => this.dishIds = dishIds);
     // (+) before params['id'] turns the string into a number
     this.route.params
       .switchMap((params: Params) => this.dishService.getDish(+params['id']))
-      .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id); },
+      .subscribe(dish => { this.dish = dish; this.dishcopy = dish; this.setPrevNext(dish.id); },
       errmess => this.errMess = <any>errmess);
   }
 
@@ -82,7 +83,27 @@ export class DishdetailComponent implements OnInit {
     this.onValueChanged(); // (re)set validation messages now
  }
 
- onValueChanged(data?: any) {
+ 
+
+ get tickInterval(): number | 'auto' {
+   return this.ratings.showTicks ? (this.ratings.autoTicks ? 'auto' : this.ratings.tickInterval) : 0;
+ }
+
+ onSubmit() {
+   this.comment = this.commentForm.value;
+   this.comment.date = new Date().toISOString();
+   console.log(this.comment);
+   this.dishcopy.comments.push(this.comment);
+   this.dishcopy.save()
+     .subscribe(dish => this.dish = dish);
+   this.commentForm.reset({
+     rating: this.ratings.value,
+     comment: '',
+     author: ''
+   });
+ }
+
+onValueChanged(data?: any) {
    if (!this.commentForm) { return; }
    const form = this.commentForm;
    for (const field in this.formErrors) {
@@ -96,22 +117,5 @@ export class DishdetailComponent implements OnInit {
        }
      }
    }
- }
-
- get tickInterval(): number | 'auto' {
-   return this.ratings.showTicks ? (this.ratings.autoTicks ? 'auto' : this.ratings.tickInterval) : 0;
- }
-
- onSubmit() {
-   this.newComment = this.commentForm.value;
-   this.newComment.date = new Date().toISOString();
-   console.log(this.newComment);
-   this.dish.comments.push(this.newComment);
-
-   this.commentForm.reset({
-     rating: this.ratings.value,
-     comment: '',
-     author: ''
-   });
  }
 }

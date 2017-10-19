@@ -17,7 +17,6 @@ import { expand, flyInOut } from '../animations/app.animation';
   ]
 })
 
-
 export class MenuComponent implements OnInit {
 
   dishes: Dish[];

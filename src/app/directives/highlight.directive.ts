@@ -15,5 +15,4 @@ export class HighlightDirective {
   @HostListener('mouseleave') onMouseLeave() {
     this.renderer.removeClass(this.el.nativeElement, 'highlight');
   }
-
 }

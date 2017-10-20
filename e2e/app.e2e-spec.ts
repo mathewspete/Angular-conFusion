@@ -7,8 +7,8 @@ describe('con-fusion App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+  it('should display message saying Ristorante Con Fusion', () => {
+    page.navigateTo('/');
+    expect(page.getParagraphText('app-root h1')).toEqual('Ristorante Con Fusion');
   });
 });

@@ -21,9 +21,9 @@
 <div [hidden]="dish || dishErrMess">
     <md-spinner></md-spinner><h4>Loading . . . Please Wait</h4>
   </div>
-  <div *ngIf="errMess">
+  <div *ngIf="dishErrMess">
     <h2>Error</h2>
-    <h4>{{errMess}}</h4>
+    <h4>{{dishErrMess}}</h4>
   </div>
 
 <md-card *ngIf="promotion" fxFlex [@expand]>

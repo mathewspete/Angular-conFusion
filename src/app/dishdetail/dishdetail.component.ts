@@ -39,7 +39,7 @@ export class DishdetailComponent implements OnInit {
   visibility = 'shown';
 
   formErrors = {
-    'author': '',
+    'author': '', 
     'comment': ''
   };
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Leader } from '../shared/leader';
+import { Feedback } from '../shared/feedback';
 import { Observable } from 'rxjs/Observable';
 import { Http, Response } from '@angular/http';
 import { baseURL } from '../shared/baseurl';
@@ -11,21 +11,12 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class LeaderService {
+export class FeedbackService {
 
   constructor(private restangular: Restangular) { }
 
-  getLeaders(): Observable<Leader[]> {
-    return this.restangular.all('leaders').getList();
-  }
-
-  getLeader(id: number): Observable<Leader> {
-    return  this.restangular.one('leaders',id).get();
-  }
-
-  getFeaturedLeader(): Observable<Leader> {
-    return this.restangular.all('leaders').getList({featured: true})
-      .map(leaders => leaders[0]);
+  submitFeedback(feedback: Feedback): Observable<Feedback> {
+    return this.restangular.all('feedback').post(feedback);
   }
 
 }

@@ -29,7 +29,7 @@
 							<dd>$1,250,375</dd>
 							<dt>Employees</dt>
 							<dd>40</dd>
-						</dl>
+						</dl> 
 					</md-card-content>
 				</md-card>
 			</div>
@@ -50,7 +50,7 @@
 		<h2>Corporate Leadership</h2>
 		<md-list *ngIf="leaders" [@expand]>
 			<md-list-item *ngFor="let leader of leaders">	
-				<img md-list-avatar src={{leader.image}} alt={{leader.name}}>
+				<img md-list-avatar src="{{BaseURL + leader.image}}" alt={{leader.name}}>
 				<h3 md-line> {{leader.name}} {{leader.abbr}} </h3>
 				<p md-line>
 					<span> {{leader.designation}} </span>
@@ -60,7 +60,7 @@
 				</p>
 			</md-list-item>
 		</md-list>
-		<div [hidden]="leaders">
+		<div [hidden]="leaders || errMess">
 			<md-spinner></md-spinner>
 			<h4>Loading . . . Please Wait</h4>
 		</div>
